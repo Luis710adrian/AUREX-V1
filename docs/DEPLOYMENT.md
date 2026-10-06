@@ -24,9 +24,15 @@ diez versiones registradas, repetición rechazada y health SQL anon correcto.
 Esto todavía no acredita aplicación en el proyecto administrado del usuario.
 Se regenera desde las migraciones mediante `node scripts/staging-sql.mjs`.
 
-Antes del primer acceso, hay que crear un usuario Owner y su tenant/membership, registrar las
-definiciones KPI y configurar las URLs de autenticación. Estas tareas siguen
-pendientes en Supabase administrado. No ejecutes `supabase/seed.sql` ni
+En Authentication / Users crea tu usuario con email confirmado. Después ejecuta
+`docs/SETUP_OWNER.sql` en una nueva consulta del SQL Editor. Esta inicialización
+exige exactamente un usuario confirmado y una base sin tenant ni memberships;
+crea AUREX STAGING, asigna Owner activo y registra ocho definiciones KPI sin
+inventar métricas ni cargar usuarios DEMO. Rechaza usuarios ambiguos, email sin
+confirmar e inicialización repetida. Fue probada en PostgreSQL local con el esquema
+Auth real. Falta comprobar el acceso efectivo y MFA desde la web administrada.
+
+Antes del primer acceso web hay que configurar las URLs de autenticación. No ejecutes `supabase/seed.sql` ni
 `scripts/demo.mjs` contra esa base: son exclusivamente locales.
 
 ## 2. Preparar la web en Vercel
@@ -74,4 +80,6 @@ invitación/activación y persistencia después de un redeploy.
 Publica el resultado y el enlace únicamente después de comprobarlos.
 
 Estado actual: código en GitHub; build del workspace probado localmente;
-cuentas/proyectos Supabase y Vercel, migraciones remotas y URL pública pendientes.
+el usuario confirmó proyecto Supabase creado y `AUREX schema ready` en SQL Editor.
+Usuario Auth creado según su confirmación. Asignación Owner, proyecto Vercel,
+variables/redirects y validación web remota todavía pendientes.
