@@ -1,0 +1,10 @@
+node_modules
+**/.next
+**/next-env.d.ts
+**/*.tsbuildinfo
+**/.env*
+apps/web/AGENTS.md
+apps/web/CLAUDE.md
+docs/master-build-specification.txt
+docs/evidence
+supabase/.temp

@@ -1,0 +1,23 @@
+{
+  "mode": "production build, local real Auth/PostgreSQL",
+  "passed": 4,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Unauthenticated API and direct URL are protected",
+      "status": "passed"
+    },
+    {
+      "name": "Sales cannot reach financial API or mutate payments",
+      "status": "passed"
+    },
+    {
+      "name": "Cross-origin mutation is denied",
+      "status": "passed"
+    },
+    {
+      "name": "Browser lead-to-cash with real Auth, MFA and persisted KPIs",
+      "status": "passed"
+    }
+  ]
+}

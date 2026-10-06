@@ -1,0 +1,812 @@
+A U R E X   B I   S O L U T I O N S
+AUREX OS
+Sistema Operativo Integral para la Consultoría
+MASTER BUILD SPECIFICATION · V1.0
+Documento maestro para entregar a ChatGPT Work y ejecutar la construcción por fases.
+Objetivo: controlar desde la nube la operación completa de AUREX — ventas, clientes, proyectos, metodología, tareas, finanzas, marketing, KPIs, archivos, automatizaciones e inteligencia artificial — dentro de una sola plataforma multiusuario.
+Mexicali, Baja California · Octubre 2026
+Research. Data. Strategy.
+01 · DIRECTIVA EJECUTIVA
+Qué se va a construir
+
+AUREX OS será el sistema operativo interno de AUREX BI Solutions. No debe ser un dashboard aislado ni un CRM pegado a un gestor de tareas: debe ser una plataforma transaccional, analítica y colaborativa donde cada dato operativo importante nazca una sola vez, tenga propietario, historial y trazabilidad, y alimente los KPIs ejecutivos en tiempo real.
+
+Regla central de producto
+Cada módulo debe existir porque soporta una decisión, un proceso o una obligación real. “Decisión, no decoración” será también la regla del software.
+Cloud-first y multiusuario: acceso seguro desde navegador, diseño responsive y permisos por rol.
+Una sola fuente de verdad: clientes, oportunidades, proyectos, tareas, horas, gastos, facturas, pagos, campañas y métricas se relacionan en la misma base.
+Operación + BI: toda captura operacional debe desembocar en métricas útiles; toda métrica debe permitir bajar al registro que la originó.
+Automatización progresiva: primero procesos confiables; después integraciones y automatizaciones; finalmente IA sobre datos limpios.
+Construcción modular: lanzar un núcleo sólido y expandirlo sin reescribir la plataforma.
+Auditable: cambios críticos, estados, permisos y acciones financieras deben dejar registro.
+Nombre de trabajo
+Nombre principal: AUREX OS. Codename opcional para repositorio y despliegues: AUREX NEXUS. El nombre comercial puede cambiar sin alterar la arquitectura.
+Criterios de éxito
+Resultado
+Meta de producto
+Dirección
+Abrir AUREX OS y entender en menos de 60 segundos ventas, caja, pipeline, proyectos, carga del equipo y alertas.
+Equipo
+Saber qué hacer hoy, para quién, con qué prioridad y en qué etapa metodológica está cada proyecto.
+Ventas
+Pasar de lead a propuesta, contrato, proyecto, facturación y seguimiento sin duplicar registros.
+Finanzas
+Ver facturación, cobranza, rentabilidad por proyecto, gastos y flujo esperado con trazabilidad.
+Marketing
+Unificar campañas, contenido, leads y atribución de Meta/Instagram/LinkedIn conforme a los permisos disponibles.
+Cliente
+Portal controlado para avances, hitos, entregables, aprobaciones y reuniones.
+BI
+KPIs calculados desde datos del sistema, con definiciones documentadas y drill-down.
+IA
+Copiloto que resume, detecta riesgos y propone acciones, sin inventar datos ni ejecutar cambios sensibles sin aprobación.
+
+02 · EXPERIENCIA E IDENTIDAD VISUAL
+Diseño AUREX: ejecutivo, tecnológico y vivo
+
+La interfaz debe conservar la identidad AUREX ya definida: negro carbón, azul marino profundo, blanco y dorado como acento. El software debe sentirse premium y tecnológico, no “gaming” ni saturado. La estética principal será oscura, con información de alta densidad y microanimación controlada.
+Token
+Uso
+#1C1C1C · Ink
+Fondo principal, paneles profundos, navegación y contraste.
+#021A40 · Navy
+Superficies de marca, encabezados, estados seleccionados, gradientes.
+#FFFFFF · White
+Texto principal, contraste y acciones primarias.
+#C6A664 · Gold
+Acento premium: foco, resaltado, selección, hitos, red neuronal.
+Grises derivados
+Texto secundario, bordes, cuadrículas, ejes y estados neutros.
+Verde / ámbar / rojo
+Únicamente para semáforos operativos y financieros; nunca como identidad dominante.
+
+Lenguaje visual
+Fondos con profundidad: gradientes navy/ink, partículas sutiles y mallas de nodos conectados.
+Inicio con escena WebGL/Canvas de “red de inteligencia”: nodos que reaccionan al cursor, cambian densidad según carga y se reorganizan al navegar.
+Microinteracciones: cards con elevación mínima, glow dorado discreto, transiciones de 150–350 ms, contadores animados y gráficos con reveal progresivo.
+Componentes analíticos sobrios: barras, líneas, heatmaps, gauges y sparklines; evitar efectos 3D en gráficas de negocio.
+Command palette global (Ctrl/Cmd+K) para abrir clientes, proyectos, tareas, acciones rápidas y búsqueda universal.
+Modo “Focus”: esconder animaciones y reducir movimiento para trabajo concentrado o equipos de baja potencia.
+Respetar prefers-reduced-motion y establecer fallback 2D para dispositivos sin WebGL estable.
+Principio de rendimiento
+Las animaciones son una capa de marca, nunca una dependencia funcional. La aplicación debe seguir siendo rápida con animaciones desactivadas. El objetivo de experiencia es navegación instantánea entre vistas frecuentes, skeletons útiles, carga progresiva y tablas virtualizadas cuando existan miles de registros.
+03 · USUARIOS, ROLES Y PERMISOS
+Modelo de acceso
+
+Implementar RBAC con posibilidad de permisos específicos por módulo y por acción. La interfaz debe ocultar acciones no autorizadas, pero la seguridad real debe vivir también en el backend y base de datos.
+Rol
+Alcance
+Owner / Dirección
+Acceso global; configuración, usuarios, KPIs, finanzas, integraciones y aprobaciones críticas.
+Director de Operaciones
+Clientes activos, proyectos, capacidad, metodología, calidad y reportes operativos.
+Project Manager
+Proyectos asignados, cronograma, equipo, horas, gastos, entregables, riesgos y comunicación.
+Analista / Consultor
+Tareas, horas, bases asignadas, análisis, hallazgos, documentos y entregables.
+Campo / Mystery Shopper
+Tareas de levantamiento, formularios, evidencias y gastos limitados al proyecto.
+Ventas / Marketing
+CRM, pipeline, propuestas, contactos, campañas, contenido, leads y atribución.
+Finanzas
+Facturas, pagos, gastos, presupuestos, flujo, rentabilidad y cierres.
+Cliente / Invitado
+Portal externo: solo su organización, proyectos compartidos, hitos, documentos y aprobaciones.
+Auditor / Solo lectura
+Lectura de módulos definidos, exportación controlada, sin edición.
+
+
+Regla de seguridad
+Ninguna operación sensible debe depender únicamente de controles visuales. Aplicar autorización en servidor y políticas a nivel de datos.
+04 · ARQUITECTURA DE INFORMACIÓN
+Mapa maestro del sistema
+
+#
+Módulo
+Propósito
+00
+Command Center
+Resumen ejecutivo, alertas, agenda, pipeline, proyectos, caja, capacidad y acciones rápidas.
+01
+Executive Intelligence
+Dashboard global + diccionario de KPIs + metas + tendencias + drill-down.
+02
+CRM & Revenue
+Leads, organizaciones, contactos, oportunidades, actividades, propuestas, contratos y forecast.
+03
+Clientes
+Ficha 360°, historial, proyectos, reuniones, documentos, facturación, satisfacción y health score.
+04
+Proyectos
+Portafolio, metodología AUREX, alcance, fases, cronograma, tareas, riesgos, horas, costos y entregables.
+05
+Trabajo & Equipo
+My Work, backlog, workload, capacidad, timesheets, objetivos, vacaciones/ausencias y desempeño operativo.
+06
+Research Ops
+Muestras, instrumentos, campo, mystery shopping, evidencias, control de calidad y bases de datos.
+07
+Entregables & Knowledge
+Archivos, versiones, plantillas, playbooks, hallazgos, aprobaciones y biblioteca institucional.
+08
+Finanzas
+Presupuestos, ingresos, gastos, facturas, pagos, cuentas por cobrar, margen, flujo y escenario.
+09
+Marketing
+Calendario de contenido, campañas, conectores sociales, leads, desempeño, atribución y activos.
+10
+Data Hub
+Fuentes, conectores, cargas, calidad, linaje, datasets, jobs y estado de sincronización.
+11
+Client Portal
+Vista externa por cliente con avances, cronograma, decisiones, archivos y comentarios.
+12
+AUREX AI
+Copiloto contextual, briefings, análisis, redacción asistida, detección de riesgos y consultas en lenguaje natural.
+13
+Automations
+Reglas, triggers, acciones, alertas, plantillas, webhooks y bitácora.
+14
+Admin & Security
+Usuarios, roles, catálogos, integraciones, secretos, auditoría, retención y configuración.
+
+05 · COMMAND CENTER Y KPIS
+Pantalla de inicio: el centro de mando
+
+La Home debe personalizarse por rol. Dirección ve negocio completo; un analista ve su trabajo, proyectos y alertas. Todos los widgets deben admitir rango de fecha y, cuando aplique, filtro por responsable, servicio, cliente y proyecto.
+Bloque
+Contenido mínimo
+AUREX Pulse
+Revenue MTD/YTD, margen bruto, caja, AR vencida, pipeline ponderado y forecast de 90 días.
+Project Health
+Proyectos activos por semáforo, hitos atrasados, presupuesto consumido, desviación y próximos entregables.
+Team Load
+Utilización, capacidad próxima, personas sobrecargadas/subutilizadas, horas pendientes y vacaciones.
+Commercial
+Leads nuevos, oportunidades por etapa, propuestas pendientes, actividades vencidas y win probability.
+Client Health
+Clientes en riesgo, últimas interacciones, entregables pendientes de aprobación, NPS/CSAT y repetición.
+Marketing
+Leads por canal, campañas activas, gasto, CPL/CPQL, alcance y contenido top.
+Today
+Agenda, tareas de alta prioridad, reuniones, recordatorios, cobros y aprobaciones.
+AUREX AI Brief
+Resumen de 5–8 líneas con cambios relevantes desde el último ingreso y acciones recomendadas.
+
+Diccionario de KPIs ejecutivos
+KPI
+Fórmula / definición
+Área
+Frecuencia
+Revenue reconocido
+Σ ingresos devengados del periodo
+Finanzas
+Diario / mensual
+Margen bruto %
+(Revenue − costos directos) / Revenue × 100
+Finanzas
+Mensual + por proyecto
+Margen operativo %
+Resultado operativo / Revenue × 100
+Finanzas
+Mensual
+Cash runway
+Caja disponible / burn mensual promedio
+Finanzas
+Semanal
+DSO
+Cuentas por cobrar / ventas a crédito × días del periodo
+Finanzas
+Semanal
+Pipeline ponderado
+Σ valor oportunidad × probabilidad de cierre
+Ventas
+Tiempo real
+Win rate
+Oportunidades ganadas / oportunidades cerradas
+Ventas
+Mensual / rolling 90d
+Sales cycle
+Promedio de días desde oportunidad calificada a Won
+Ventas
+Rolling 90d
+Utilización billable
+Horas billable / horas disponibles × 100
+Operaciones
+Semanal
+Project margin
+(Ingreso proyecto − costo directo) / ingreso × 100
+Proyectos
+Semanal
+On-time milestone rate
+Hitos a tiempo / hitos terminados × 100
+Proyectos
+Semanal
+Budget variance
+(Costo real − presupuesto) / presupuesto × 100
+Proyectos
+Semanal
+Scope creep index
+Horas fuera de alcance / horas totales × 100
+Proyectos
+Semanal
+Client health score
+Score 0–100 ponderando pagos, entregas, satisfacción, actividad y riesgo
+Clientes
+Semanal
+Repeat / expansion rate
+Clientes con recompra o expansión / clientes elegibles
+Clientes
+Trimestral
+MQL→SQL
+SQL / MQL × 100
+Marketing
+Mensual
+Cost per qualified lead
+Gasto de marketing / SQL generados
+Marketing
+Mensual
+Lead-to-client
+Clientes ganados / leads atribuidos
+Marketing/Ventas
+Mensual
+Data freshness SLA
+Fuentes actualizadas dentro de SLA / fuentes críticas × 100
+Data Hub
+Diario
+QA first-pass
+Entregables aprobados sin retrabajo mayor / entregables revisados
+Calidad
+Mensual
+
+
+Diseño del KPI
+Cada KPI debe tener owner, fuente, fórmula versionada, periodicidad, meta, umbrales, explicación y enlace de drill-down. No aceptar “números mágicos” calculados solo en frontend.
+06 · CRM Y REVENUE OPERATIONS
+CRM construido para consultoría B2B
+
+Objeto
+Campos / funciones clave
+Lead
+Origen, empresa, contacto, sector, necesidad, score, consentimiento, campaña, owner, siguiente acción.
+Organization
+Razón/nombre comercial, sector, tamaño, ubicaciones, web, relación, health score, potencial, tags.
+Contact
+Cargo, influencia, email/teléfono, canal preferido, relación, consentimientos, notas y actividad.
+Opportunity
+Servicio, problema, valor estimado, probabilidad, etapa, fecha cierre, competidor, source, owner.
+Activity
+Llamada, visita, email, WhatsApp manual, reunión, tarea, nota; fecha y resultado.
+Proposal
+Versión, alcance, precio, vigencia, descuentos, aprobaciones, archivo, estado y firma.
+Contract
+Referencia, términos, fecha inicio/fin, facturación, alcance contratado, anexos y renovaciones.
+Revenue forecast
+Commit / Best Case / Pipeline por mes; basado en oportunidades y contratos.
+
+Pipeline estándar
+Lead → Contacted → Qualified → Discovery → Solution Designed → Proposal Sent → Negotiation → Won / Lost. Cada etapa requiere criterios de entrada/salida; mover una oportunidad debe registrar fecha, usuario y motivo.
+SLA: lead nuevo sin actividad > 24 h = alerta; oportunidad sin siguiente acción = riesgo.
+Lost reason obligatorio: precio, timing, no prioridad, competencia, sin presupuesto, no fit, no respuesta u otro documentado.
+Propuestas con approval flow cuando descuento o condiciones excedan umbrales configurables.
+Al ganar: crear/ligar cliente, contrato, proyecto preliminar, presupuesto y plan de facturación automáticamente.
+Forecast de caja debe considerar probabilidad comercial antes de Won y calendario de cobro después de Won.
+07 · PROYECTOS Y METODOLOGÍA AUREX
+El corazón operativo del sistema
+
+Cada proyecto debe poder nacer desde una oportunidad ganada o crearse manualmente. La vista de proyecto combina estado, metodología, cronograma, presupuesto, equipo, tareas, horas, riesgos, archivos, reuniones, hallazgos y decisiones.
+Fase AUREX
+Objetivo dentro del sistema
+Gates obligatorios
+01 · Diagnóstico inicial
+Capturar contexto, decisión, hipótesis, stakeholders, datos disponibles y riesgos.
+Problem statement aprobado; sponsor; decisión objetivo; fuentes iniciales.
+02 · Diseño del estudio
+Definir metodología, alcance, muestra, métricas, plan, entregables y responsables.
+Scope baseline; cronograma; presupuesto; instrumento/metodología aprobados.
+03 · Levantamiento
+Ejecutar campo / extracción / recolección con trazabilidad y QA.
+Tasa avance; incidencias; evidencias; control de calidad; cierre de muestra.
+04 · Análisis estratégico
+Construir patrones, causa raíz, modelos y hallazgos.
+Dataset congelado/versionado; hallazgos con evidencia; revisión interna.
+05 · Priorización
+Ordenar recomendaciones por impacto, complejidad y velocidad.
+Matriz de priorización; responsable; impacto estimado; riesgos.
+06 · Presentación ejecutiva
+Cerrar narrativa, presentar, documentar decisiones y siguientes pasos.
+Deliverables aprobados; sesión; acta de decisiones; follow-up/expansión.
+
+Project Health Score
+Crear score 0–100 calculado, visible y explicable. Propuesta inicial: 30% cronograma + 25% presupuesto + 20% entregables/QA + 15% riesgos/incidencias + 10% cliente/comunicación. Los pesos son configurables por tipo de proyecto. Semáforo: ≥80 verde; 60–79 ámbar; <60 rojo.
+Gantt interactivo con dependencias, baseline y milestones.
+Tablero Kanban de tareas + vista lista + calendario + carga por persona.
+Riesgos con probabilidad, impacto, owner, mitigación, fecha de revisión y estado.
+Issues separados de risks: problema ocurrido, impacto, acción y resolución.
+Decision log: decisión, contexto, alternativas, fecha, aprobador y efecto en scope/budget/timeline.
+Change request formal para alcance: descripción, horas/costo, impacto, aprobación y versión contractual.
+Versionado de entregables y aprobación interna antes de compartir al cliente.
+08 · TRABAJO, EQUIPO Y CAPACIDAD
+Asignación de trabajo y operación diaria
+
+Vista
+Debe resolver
+My Work
+Todo lo asignado al usuario, ordenado por prioridad, fecha, proyecto y bloqueo.
+Team Board
+Qué hace cada persona, carga, prioridades, bloqueos y próximas entregas.
+Capacity
+Horas disponibles vs planificadas vs reales por semana y rol.
+Timesheets
+Registro simple por proyecto/fase/tarea; billable/no billable; comentarios; aprobación.
+Objectives
+Objetivos trimestrales del equipo conectados a métricas operativas, sin convertirlo en HR pesado.
+Absences
+Vacaciones/ausencias para descontar capacidad y evitar sobreasignación.
+
+KPIs de equipo
+Utilización billable y total por persona/rol/equipo.
+Capacidad comprometida 2, 4 y 8 semanas.
+Horas reales vs estimadas por tipo de tarea y servicio.
+Trabajo vencido y throughput semanal.
+Retrabajo: horas de corrección / horas de producción.
+Concentración de conocimiento: % de proyectos críticos dependientes de una sola persona.
+09 · RESEARCH OPERATIONS
+Herramientas para estudios de mercado y Mystery Shopper
+
+Este módulo diferencia AUREX OS de un software administrativo genérico. Debe soportar proyectos de investigación desde el diseño hasta la base final y el control de campo.
+Submódulo
+Funciones
+Sampling
+Universo, marco, método, cuotas, tamaño objetivo, avance por segmento y sustituciones.
+Instrument Builder
+Cuestionarios/checklists versionados; tipos de pregunta; reglas; scoring; validación.
+Field Assignments
+Asignación por persona/sucursal/zona; fecha; instrucciones; estado; evidencia.
+Mystery Visits
+Escenario, sucursal, shopper, scorecards, fotos/archivos, incidencias y validación.
+Data Intake
+Carga CSV/XLSX/API/formularios; mapeo de columnas; validación; duplicados; errores.
+QA Console
+Completitud, consistencia, outliers, tiempos anómalos, faltantes, duplicados y revisión manual.
+Research Dataset
+Snapshot versionado para análisis; diccionario de variables; linaje; bloqueo posterior.
+Findings Register
+Hallazgo, evidencia, impacto, segmento, confianza, recomendación y relación con slides/reportes.
+
+
+Trazabilidad de investigación
+Todo hallazgo presentado al cliente debe poder apuntar a la evidencia, fuente o cálculo que lo respalda. Esa relación debe modelarse desde el inicio.
+10 · FINANZAS Y RENTABILIDAD
+Finanzas operativas conectadas al proyecto
+
+AUREX OS no necesita reemplazar de inicio un sistema contable/fiscal. Debe dominar la capa gerencial: presupuesto, facturación, cobros, gastos, rentabilidad, flujo esperado y escenarios. La contabilidad oficial puede integrarse o exportarse posteriormente.
+Área
+Funciones principales
+Project Budget
+Fee, descuentos, costos directos, viajes, proveedores, horas presupuestadas y margen objetivo.
+Invoices
+Folio interno, cliente, proyecto, concepto, subtotal/impuestos, fecha, vencimiento, estado, PDF/CFDI link.
+Payments
+Fecha, monto, factura, método, referencia, cuenta; conciliación manual/API futura.
+Expenses
+Categoría, proyecto, proveedor, comprobante, impuesto, reembolsable, aprobador y estado.
+AR Aging
+0–30 / 31–60 / 61–90 / 90+; alertas y responsable de cobranza.
+Cash Forecast
+Entradas contratadas + cobros esperados + pipeline ponderado; salidas recurrentes + proyecto.
+P&L Managerial
+Revenue, direct cost, gross margin, OPEX, operating result por mes.
+Profitability
+Margen por cliente, proyecto, servicio, sector y responsable.
+Scenario
+Base / conservador / agresivo para revenue, contrataciones y gasto.
+
+Controles
+Gastos > umbral configurable requieren aprobación.
+No permitir marcar factura “pagada” sin payment asociado.
+Cambios al fee contractual o presupuesto dejan audit log.
+Costos de horas: usar costo/hora interno por persona o rol, con historial efectivo por fecha.
+Nunca mostrar “margen real” si faltan horas/costos críticos: marcar dato incompleto y explicar por qué.
+11 · MARKETING E INTEGRACIONES SOCIALES
+Marketing Command Center
+
+El módulo debe centralizar estrategia de contenido, campañas, leads y rendimiento. Las integraciones se construyen como conectores independientes porque Meta, Instagram y LinkedIn dependen de OAuth, scopes, revisión y versionado de APIs.
+Submódulo
+Funciones
+Content Calendar
+Idea, objetivo, canal, formato, copy, asset, owner, fecha, status, campaña, CTA y UTM.
+Campaigns
+Presupuesto, objetivo, fechas, audiencias, canal, assets, métricas y atribución.
+Meta / Instagram Connector
+Cuentas autorizadas, insights disponibles, campañas/ads cuando el permiso lo permita, webhooks y sync incremental.
+LinkedIn Connector
+Company Page, posts, engagement/analytics y advertising según producto y tier aprobados.
+Lead Attribution
+first-touch, last-touch y source/campaign/UTM; relación lead→opportunity→revenue.
+Asset Library
+Videos, imágenes, copies, templates, usage rights, versiones y desempeño por pieza.
+Reporting
+Reach, impressions, engagement, clicks, spend, leads, qualified leads, CPL, CPQL, pipeline y revenue atribuido.
+
+
+No simular acceso de API
+Cuando una API requiera aprobación o permiso todavía no disponible, el sistema debe mostrar “connector pending”, ofrecer importación manual y mantener la interfaz detrás de feature flags. Nunca fabricar métricas como si vinieran de la red social.
+12 · DATA HUB, AUTOMATIZACIÓN E IA
+Capa inteligente de AUREX OS
+
+Data Hub
+Registro de fuentes: tipo, propietario, credenciales seguras, frecuencia, SLA, última sincronización y salud.
+Conectores: CSV/XLSX, Google Sheets/Drive, bases SQL, APIs REST, webhooks y conectores sociales.
+Jobs con estados queued/running/success/failed/partial, logs, reintentos exponenciales y alertas.
+Data quality rules: nulos, duplicados, dominios válidos, fecha fresca, reconciliación de totales y anomalías.
+Lineage mínimo: fuente → dataset → métrica/entregable.
+Zona raw / staging / curated para integraciones analíticas complejas, sin contaminar tablas operativas.
+Automation Engine
+Trigger
+Condición
+Acción
+Opportunity idle
+Sin actividad 5 días
+Crear alerta + tarea al owner.
+Proposal due
+Vigencia expira en 3 días
+Recordatorio a ventas + sugerir follow-up.
+Invoice overdue
+Vencimiento + 1 día
+Alerta finanzas; tarea de cobranza.
+Milestone risk
+Forecast > fecha baseline
+Notificar PM y dirección; abrir risk.
+Budget threshold
+Costo real > 80% con avance < 80%
+Alerta de sobrecosto.
+Client approval
+Entregable aprobado
+Cerrar milestone y habilitar siguiente gate.
+Data source stale
+SLA incumplido
+Data incident + aviso al owner.
+Weekly digest
+Viernes
+Resumen por rol y próximos 7 días.
+
+AUREX AI
+Implementar un copiloto con acceso controlado al contexto del usuario y con respuestas citables dentro del sistema. Las acciones de escritura o cambio de estado deben usar herramientas internas y solicitar confirmación cuando sean sensibles.
+Executive Brief: “qué cambió desde ayer / esta semana y qué requiere atención”.
+Project Copilot: resume estado, detecta riesgos, compara plan vs real y propone siguientes acciones.
+CRM Copilot: prepara reunión, resume cuenta, redacta follow-up y sugiere preguntas de discovery.
+Research Copilot: ayuda a estructurar hipótesis, códigos, hallazgos y narrativa; siempre separa dato, interpretación y recomendación.
+Finance Copilot: explica variaciones, cuentas vencidas, margen y escenarios; sin ejecutar pagos.
+Marketing Copilot: performance, insights de contenido, ideas y briefs basados en campañas reales.
+Ask AUREX: lenguaje natural sobre datos autorizados: “¿qué proyectos tienen margen <30% y un milestone crítico esta semana?”
+
+Guardrails de IA
+No inventar datos ni ocultar fuentes; respetar siempre los permisos. No enviar comunicaciones ni modificar finanzas/contratos sin aprobación explícita. Registrar acciones y resultados críticos.
+13 · MODELO DE DATOS
+Entidades principales y relaciones
+
+Dominio
+Tablas / entidades
+Identity
+organizations_internal, users, profiles, roles, permissions, memberships
+CRM
+accounts, contacts, leads, opportunities, opportunity_stage_history, activities, proposals, proposal_versions, contracts
+Projects
+projects, project_members, phases, milestones, tasks, task_dependencies, risks, issues, decisions, change_requests
+Time & Capacity
+timesheets, time_entries, capacity_calendar, absences, role_cost_rates
+Research
+studies, samples, quotas, instruments, instrument_versions, field_assignments, responses, evidence, qa_checks, datasets, findings
+Files
+files, file_versions, file_links, approvals, comments, templates
+Finance
+project_budgets, budget_lines, invoices, invoice_lines, payments, expenses, vendors, recurring_costs, cash_accounts
+Marketing
+channels, social_connections, campaigns, content_items, content_assets, social_metrics_daily, marketing_spend, attribution_touchpoints
+Data Hub
+data_sources, connectors, sync_jobs, sync_logs, data_quality_rules, data_quality_results, dataset_lineage
+KPIs
+kpi_definitions, kpi_targets, kpi_values, kpi_alert_rules
+Automation
+automation_rules, automation_runs, notifications, webhooks
+AI
+ai_threads, ai_messages, ai_actions, ai_feedback
+Audit
+audit_events, auth_events, export_events
+
+Reglas de modelado
+Todas las entidades de negocio llevan id UUID, created_at, updated_at, created_by y, cuando aplique, soft delete/archive.
+Eventos críticos usan tablas de historial, no solo el “estado actual”.
+Moneda y zona horaria explícitas; guardar timestamps en UTC y mostrar en zona del usuario.
+Importes como decimal/numeric, nunca float.
+Catálogos configurables para sectores, servicios, razones de pérdida, categorías de gasto y estados especiales.
+Archivos en storage; base guarda metadatos, permisos, hash, relación y versiones.
+Nunca guardar tokens OAuth en tablas accesibles al cliente; usar vault/secrets del servidor.
+14 · ARQUITECTURA TÉCNICA RECOMENDADA
+Stack objetivo para la primera versión productiva
+
+Capa
+Recomendación
+Motivo
+Frontend
+Next.js App Router + TypeScript
+Aplicación full-stack moderna, SSR/server components, route handlers y ecosistema sólido.
+UI
+Tailwind CSS + componentes accesibles headless
+Velocidad de implementación, consistencia y control visual AUREX.
+Database
+PostgreSQL administrado en Supabase
+Modelo relacional fuerte, SQL, RLS, extensiones y analytics operativo.
+Auth
+Supabase Auth + MFA para roles sensibles
+Sesiones, OAuth/SSO futuro y autorización integrada.
+Storage
+Supabase Storage
+Entregables, evidencias y assets con políticas.
+Realtime
+Supabase Realtime para eventos selectivos
+Actualizaciones colaborativas y notificaciones; no usar para todo.
+Backend logic
+Server Actions/Route Handlers + Edge Functions para OAuth/webhooks
+Separación segura entre cliente e integraciones.
+Background jobs
+Cola/worker dedicado con reintentos e idempotencia
+Sincronizaciones, reportes, IA y procesos largos no deben bloquear requests.
+Hosting
+Vercel o infraestructura equivalente + Supabase
+Despliegue continuo, previews y escalabilidad inicial.
+Observability
+Sentry + logs estructurados + OpenTelemetry donde aporte
+Errores, performance, tracing y diagnóstico.
+AI
+OpenAI Responses API vía servidor
+Respuestas estructuradas, herramientas y flujos agentic; claves solo server-side.
+Testing
+Vitest/Jest + Playwright + pruebas SQL/RLS
+Unitarias, integración, e2e y seguridad de datos.
+
+
+Arquitectura evolutiva
+Empezar como “modular monolith” bien separado por dominios. No crear microservicios prematuramente. Extraer servicios solo cuando integración, carga o ownership lo justifiquen.
+Estructura de repositorio sugerida
+apps/web · packages/ui · packages/domain · packages/db · packages/analytics · packages/integrations · packages/ai · supabase/migrations · workers/jobs · tests/e2e · docs/adr. Mantener tipos compartidos y contratos de integración versionados.
+15 · SEGURIDAD, AUDITORÍA Y CONFIABILIDAD
+Requisitos no negociables
+
+RLS habilitado en tablas expuestas y políticas probadas por rol/tenant.
+Secretos únicamente server-side; rotación y separación dev/staging/prod.
+MFA obligatorio para Owner, Finanzas y administradores.
+Rate limiting para auth, webhooks, endpoints públicos y acciones de IA.
+CSRF/CSP/cookies seguras según arquitectura; validación server-side de todo input.
+Audit log append-only para contratos, facturas, permisos, integraciones, exportaciones y cambios de estados clave.
+Backups automáticos y prueba documentada de restore; RPO/RTO definidos.
+Exportaciones de datos con permisos y registro; enlaces compartidos con expiración.
+Principio de mínimo privilegio en API scopes y cuentas de servicio.
+Retención configurable por tipo de evidencia/archivo y capacidad de archivado.
+Objetivo SLO inicial
+Meta
+Disponibilidad app interna
+99.5% mensual inicialmente; elevar según dependencia operativa.
+P95 interacción común
+< 1.5 s después de carga inicial; tablas con paginación/virtualización.
+Errores 5xx
+< 0.5% de requests.
+Jobs críticos
+> 99% éxito con reintentos; fallos visibles en Data Hub.
+Backups
+Diarios como mínimo + retención definida; validar restore.
+RLS tests
+Cobertura de lectura/escritura por rol en tablas críticas.
+
+16 · ESTRATEGIA DE INTEGRACIONES
+Conectores como producto, no como parches
+
+Integración
+MVP
+Después
+Meta / Instagram
+OAuth shell, cuentas, token lifecycle, import manual y schema de métricas.
+Insights/campaign sync según scopes aprobados; webhooks; attribution.
+LinkedIn
+OAuth shell + Company Page/analytics solo cuando el producto de API esté aprobado.
+Community Management / Ads / Lead Sync según acceso y tier.
+Google Drive
+Adjuntar/enlazar carpetas o documentos del proyecto.
+Sync de metadata, permisos y plantillas.
+Google Calendar
+Calendario interno + .ics/manual inicialmente.
+Dos vías para reuniones y deadlines.
+Email
+Registro manual o BCC/forward address.
+OAuth Gmail/Outlook y asociación automática con CRM.
+Accounting
+CSV/export de facturación y gastos.
+Connector a sistema contable elegido.
+Payments
+Registro manual y conciliación.
+Webhooks de pasarela/banco si aporta valor.
+Power BI
+Export datasets/SQL views seguras.
+Embedding o semantic layer solo si se requiere.
+
+Todos los conectores implementan: connection record, scopes, token expiry, last_sync, cursor/checkpoint, rate limit handling, retry, idempotency, error taxonomy, logs y “disconnect/revoke”.
+17 · FLUJOS CRÍTICOS END-TO-END
+Cómo debe comportarse el sistema
+
+Flujo
+Cadena
+Lead-to-Cash
+Lead → qualification → opportunity → discovery → proposal → Won → contract → project → invoice schedule → delivery → payment → expansion.
+Project Delivery
+Project setup → Phase 01 → gates → Phase 02 → field/data → analysis → prioritization → executive delivery → closure → lessons learned.
+Change Control
+Request → impact estimate → approval/rejection → baseline update → budget/timeline update → audit.
+Research QA
+Instrument v1 → pilot → approved version → field → QA exceptions → corrections → dataset freeze → findings.
+Content-to-Revenue
+Content/campaign → UTM/source → lead → opportunity → client → attributed pipeline/revenue.
+Finance Close
+Expenses/hours posted → invoice/payment updates → project margin refresh → P&L managerial → variance commentary.
+Client Approval
+Deliverable draft → internal QA → client shared → comments → revision → approval → milestone complete.
+Data Incident
+Source stale/fail → incident → owner → retry/fix → validation → close → postmortem if critical.
+
+18 · ROADMAP DE CONSTRUCCIÓN
+Construir por capas, no todo de golpe
+
+Fase
+Duración estimada
+Entregable
+Fase 0 · Foundation
+1–2 semanas
+Repo, diseño tokens, auth, roles, DB base, RLS, environments, CI/CD, audit skeleton, seed data, shell UI.
+Fase 1 · Operating Core
+3–5 semanas
+Command Center v1, CRM, clientes, proyectos, metodología, tareas, cronograma, archivos, notificaciones.
+Fase 2 · Money & Capacity
+2–4 semanas
+Timesheets, capacity, project budgets, expenses, invoices, payments, AR, profitability, financial KPIs.
+Fase 3 · Research Ops
+3–5 semanas
+Sampling, instrument versions, field assignments, mystery visits, evidence, QA, datasets, findings.
+Fase 4 · Marketing & Data Hub
+3–6 semanas
+Content, campaigns, attribution, connector framework, Meta/LinkedIn shells, sync jobs, data quality.
+Fase 5 · AI & Portal
+3–5 semanas
+Client Portal, AUREX AI, action approvals, executive briefings, semantic search, advanced automations.
+Fase 6 · Scale & Hardening
+continuo
+Performance, observability, DR, advanced permissions, SSO, integrations, mobile/PWA, audits, refinements.
+
+
+Criterio de avance
+Work no debe saltar a la siguiente fase por “verse bonita”. Cada fase requiere datos persistentes, permisos, pruebas, estados vacíos, errores manejados y una demo end-to-end.
+19 · DEFINITION OF DONE
+Qué significa “terminado” para cada módulo
+
+CRUD funcional con validaciones y permisos reales.
+Migración SQL y seed reproducible.
+Estados loading / empty / error / permission denied diseñados.
+Responsive desktop-first y usable en tablet/móvil para tareas esenciales.
+Audit events para acciones críticas.
+Métricas o eventos necesarios para KPIs instrumentados.
+Unit/integration tests en lógica crítica y Playwright en el happy path.
+No hay secretos hardcoded, mocks disfrazados de producción ni datos “fake” en dashboard productivo.
+Accesibilidad básica: keyboard, focus, labels, contraste, reduced motion.
+Documentación corta: objetivo, rutas, tablas, permisos, eventos y known limitations.
+Feature flags para integraciones incompletas o beta.
+Changelog de la fase y lista explícita de deuda técnica aceptada.
+Pruebas de aceptación globales
+Crear un lead, convertirlo a oportunidad, generar propuesta, marcar Won y crear proyecto sin volver a capturar empresa/contacto.
+Asignar equipo y tareas, cargar horas/gastos, ver impacto inmediato en costo y margen del proyecto.
+Completar gates de metodología, subir entregable, aprobarlo y reflejar avance/hito en portal.
+Emitir factura interna, registrar pago y comprobar que AR/DSO/caja/cliente se actualizan.
+Filtrar un KPI ejecutivo y bajar hasta el registro fuente que lo compone.
+Bloquear a un usuario sin permisos e intentar acceso directo por URL/API: debe fallar.
+Forzar fallo de connector/job: debe registrar error, reintentar y notificar sin duplicar datos.
+Preguntar a AUREX AI por datos a los que el usuario no tiene acceso: debe negarse o no recuperarlos.
+20 · INSTRUCCIÓN MAESTRA PARA CHATGPT WORK
+Prompt de ejecución — entregar este documento a Work
+
+
+Cómo usar esta sección
+Adjunta este DOCX en una conversación nueva de ChatGPT Work y pega la instrucción siguiente. Work deberá tratar el documento completo como fuente de requisitos y construir por fases, conservando continuidad entre sesiones.
+ACTÚA COMO EL EQUIPO PRINCIPAL DE PRODUCTO, UX, SOFTWARE, DATOS, SEGURIDAD Y QA DE AUREX BI SOLUTIONS. TU OBJETIVO ES CONSTRUIR AUREX OS, UNA PLATAFORMA CLOUD MULTIUSUARIO PARA OPERAR LA CONSULTORÍA DE EXTREMO A EXTREMO.
+
+1) Trata este Master Build Specification como contrato funcional. No reduzcas el alcance a un mockup. Debes producir software ejecutable, persistente, probado y documentado.
+2) Trabaja por las fases definidas. Antes de desarrollar una fase, crea un mini plan técnico y un checklist de aceptación; al terminar, ejecuta pruebas y genera changelog.
+3) Arquitectura inicial: modular monolith. Prioriza Next.js + TypeScript + PostgreSQL/Supabase, RLS, storage y funciones server-side. Si propones cambiar el stack, documenta la decisión en un ADR y demuestra por qué mejora seguridad, costo, mantenibilidad o velocidad.
+4) Diseña la base de datos primero. Usa migraciones reproducibles, UUID, timestamps, historial donde corresponda y datos seed realistas para AUREX. No dependas de arrays hardcoded para funcionalidad real.
+5) Seguridad primero: autorización backend, RLS, validación server-side, secretos fuera del cliente, logs de auditoría y mínimo privilegio.
+6) La identidad AUREX es obligatoria: #1C1C1C, #021A40, #FFFFFF y #C6A664. Interfaz oscura premium, tecnológica, sobria; red neuronal/partículas WebGL como capa de marca con fallback, reduced-motion y límites de rendimiento. Evita estética genérica de dashboard SaaS.
+7) La Home debe ser un verdadero Command Center. Los KPIs se calculan desde datos persistidos y deben permitir drill-down; jamás muestres números ficticios sin etiqueta DEMO.
+8) Implementa el CRM, proyectos, metodología AUREX, trabajo/capacidad, finanzas, research ops, marketing, Data Hub, portal y AI según este documento. No mezcles conceptos: un task no es un milestone; un risk no es un issue; una opportunity no es un client; un invoice no es un payment.
+9) Integraciones externas: crea una capa de connectors con OAuth, scopes, token lifecycle, sync cursors, rate-limit handling, retries, idempotency y logs. Si una API requiere aprobación, deja el connector en estado pending/sandbox y ofrece import manual. Nunca falsifiques que una API está conectada.
+10) IA: usar API server-side, respuestas estructuradas y herramientas internas. Nunca exponer claves. La IA debe citar/ligar registros fuente cuando explique métricas. Acciones sensibles requieren confirmación.
+11) Calidad: agrega tests unitarios/integración para lógica crítica y Playwright para flujos E2E. Testea RLS y permisos de forma explícita. Corrige cualquier regresión antes de declarar una fase completa.
+12) Observabilidad: logs estructurados, error tracking y health checks. Los jobs largos deben correr en worker/queue, con estados y reintentos.
+13) UX: estados loading/empty/error/denied, navegación por teclado, command palette, búsqueda global, responsive y accesible. Animaciones nunca pueden bloquear trabajo.
+14) Documenta decisiones técnicas relevantes en /docs/adr y mantén README con setup local, variables de entorno, migraciones, seed, tests y deploy.
+15) Al final de cada fase entrega: (a) qué construiste, (b) cómo probarlo, (c) screenshots o preview disponible, (d) riesgos pendientes, (e) siguiente backlog priorizado.
+16) No me detengas con preguntas menores: toma decisiones razonables alineadas con el documento y deja configurables los puntos de negocio inciertos. Solo pide intervención cuando necesites credenciales, aprobación legal/comercial, acceso de API o una decisión que cambie materialmente el producto.
+17) No pases a producción con credenciales de desarrollo, datos sensibles de prueba, RLS incompleto, endpoints sin protección o integraciones simuladas.
+18) Empieza ahora por FASE 0. Primero: inspecciona los assets disponibles de AUREX, crea el repositorio/proyecto, design system, arquitectura de carpetas, esquema inicial de datos, auth/RBAC/RLS, environments, CI básico y shell de navegación. Después construye un vertical slice end-to-end: Lead → Opportunity → Won → Project → Task → Time Entry → Invoice → Payment → KPI, para validar que la arquitectura soporta el ciclo completo antes de expandir.
+21 · PRIMER BACKLOG QUE WORK DEBE EJECUTAR
+FASE 0 + Vertical Slice
+
+Prioridad
+Item
+Criterio
+P0
+Project bootstrap
+Next.js/TS, envs, lint, formatter, test runner, CI, deploy preview.
+P0
+Design system
+Tokens AUREX, sidebar/topbar, cards, tables, dialogs, command palette, chart primitives.
+P0
+Auth & RBAC
+Login, invite, roles, memberships, MFA-ready, permission helpers, protected routes.
+P0
+Core DB
+accounts, contacts, leads, opportunities, projects, tasks, time_entries, invoices, payments, kpi_definitions, audit_events.
+P0
+RLS
+Policies por rol/tenant + test suite.
+P0
+CRM vertical
+Lead → opportunity → Won.
+P0
+Project vertical
+Crear project desde Won, assign owner, task y milestone.
+P0
+Finance vertical
+Time entry + invoice + payment + project margin.
+P0
+Command Center
+6–8 KPIs reales alimentados por el vertical slice.
+P1
+Audit + notifications
+Eventos críticos y alertas in-app.
+P1
+Seed
+Dataset demo realista de AUREX, claramente marcado DEMO.
+P1
+E2E
+Playwright del ciclo completo + permisos.
+P1
+Docs
+README, schema, ADR-001, setup y definición de variables.
+
+22 · REFERENCIAS TÉCNICAS Y SUPUESTOS
+Notas para mantener el documento vigente
+
+Este blueprint usa como base la identidad visual y la metodología operativa existentes de AUREX, y combina esa realidad con una arquitectura web moderna. Las versiones y permisos de APIs externas deben validarse al momento de implementar cada connector.
+Referencia
+Uso en el diseño
+AUREX · Vista previa de identidad
+Paleta y lenguaje visual: ink, navy, white, gold; interfaz oscura y escenas de partículas.
+AUREX · Portafolio de Servicios 2026
+Servicios, principio “decisión, no decoración”, metodología de seis fases y enfoque de BI.
+Next.js Documentation
+Framework full-stack, App Router, autenticación, seguridad, testing y despliegue.
+Supabase Docs
+Postgres, Auth, Row Level Security, Realtime y Edge Functions.
+LinkedIn Marketing / Community Management Docs
+Acceso por productos/tier, autenticación, versionado y requisitos de integración.
+OpenAI API Docs · Responses
+Capa de IA con herramientas, structured output y llamadas server-side.
+
+URLs de referencia técnica:
+https://nextjs.org/docs
+https://supabase.com/docs/guides/database/postgres/row-level-security
+https://supabase.com/docs/guides/functions
+https://learn.microsoft.com/linkedin/marketing/
+https://developers.facebook.com/docs/instagram-platform/
+https://developers.facebook.com/docs/marketing-apis/
+https://developers.openai.com/api/reference/responses/overview
+
+Resultado esperado
+AUREX OS debe convertirse en la memoria operacional y el sistema nervioso de la consultoría: cada oportunidad, proyecto, hora, peso, hallazgo y decisión importante debe poder rastrearse, medirse y convertirse en acción.
