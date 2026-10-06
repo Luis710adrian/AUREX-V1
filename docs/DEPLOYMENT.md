@@ -14,8 +14,17 @@ No publiques contraseñas, connection strings ni claves en el chat o GitHub.
 La creación y el acceso a la cuenta requieren intervención del titular; este
 entorno no tiene una sesión ni credenciales para administrar Supabase o Vercel.
 
-Antes del primer acceso, hay que aplicar las diez migraciones de
-`supabase/migrations`, crear un usuario Owner y su tenant/membership, registrar las
+Para inicializar un proyecto vacío desde el navegador, abre `docs/SETUP_DATABASE.sql`
+en GitHub, pulsa Raw, copia el contenido completo y ejecútalo en SQL Editor del
+proyecto AUREX-STAGING. El archivo reúne las diez migraciones en una transacción,
+registra sus versiones y rechaza una segunda inicialización. No incluye usuarios,
+contraseñas ni datos DEMO. Si falla, comparte únicamente el mensaje de error.
+Se verificó localmente en una base PostgreSQL vacía con el esquema Auth real:
+diez versiones registradas, repetición rechazada y health SQL anon correcto.
+Esto todavía no acredita aplicación en el proyecto administrado del usuario.
+Se regenera desde las migraciones mediante `node scripts/staging-sql.mjs`.
+
+Antes del primer acceso, hay que crear un usuario Owner y su tenant/membership, registrar las
 definiciones KPI y configurar las URLs de autenticación. Estas tareas siguen
 pendientes en Supabase administrado. No ejecutes `supabase/seed.sql` ni
 `scripts/demo.mjs` contra esa base: son exclusivamente locales.
