@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next';
+import path from 'node:path';
 const config: NextConfig = {
   poweredByHeader: false,
+  outputFileTracingRoot: path.join(__dirname, '../..'),
   allowedDevOrigins: ['127.0.0.1'],
   async headers() {
     return [

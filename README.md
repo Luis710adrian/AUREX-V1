@@ -106,9 +106,10 @@ El target administrado sigue siendo Supabase + Vercel o equivalente. Configura u
 proyecto dev/staging separado, aplica las migraciones con `supabase db push`, usa
 claves de ese proyecto en los ajustes seguros, configura redirects/SMTP/MFA y
 valida Auth/RLS/Storage ahí antes de publicar. **No ejecutes el seed DEMO ni el
-bootstrap local contra producción.** En Vercel, raíz `apps/web`, instalación desde
-el workspace con el lockfile raíz y build Next; confirmar configuración en un
-preview real antes de aceptarla. No hay despliegue externo verificado todavía.
+bootstrap local contra producción.** En Vercel usa raíz `apps/web`, Next.js,
+Node 24, Install Command `cd ../.. && npm ci` y Build Command `npm run build`.
+Activa el acceso a archivos fuera del Root Directory para los paquetes compartidos.
+Consulta `docs/DEPLOYMENT.md`. No hay despliegue externo verificado todavía.
 
 No se ha provisionado Storage/Realtime en el harness ligero. La tabla `files` guarda
 solo metadatos: cargar/versionar/aprobar entregables sigue pendiente. No hay APIs
